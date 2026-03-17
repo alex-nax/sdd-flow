@@ -106,8 +106,19 @@ Reads `_status.md` to determine current phase and continues from there.
 /sdd fork [existing-name] [new-name]
 ```
 
-When context is lost or pivoting: creates new spec dir copying existing artifacts as starting point, with `_status.md` noting the fork.
+Use fork when the current flow is exhausted (context rot, wrong approaches, dead ends).
 
+**Do NOT blindly copy all flow docs.** Instead:
+
+1. **Analyze the exhausted flow** - read all artifacts, identify what worked vs. what failed
+2. **Create `00-fork-context.md`** in new flow with:
+   - Origin reference and reason for fork
+   - What worked (successful decisions, valid requirements, good discoveries)
+   - What failed (failed approaches, wrong assumptions, dead ends)
+   - Key learnings to carry forward
+   - Recommendations for new approach
+3. **Start fresh in REQUIREMENTS phase** - don't copy old docs verbatim
+4. **Begin requirements elicitation** informed by past learnings
 ---
 
 ## Phase Transitions

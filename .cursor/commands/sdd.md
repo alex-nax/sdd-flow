@@ -19,10 +19,50 @@ Parse the arguments to determine the action:
 4. Continue from where left off
 
 ### `fork [existing] [new]` - Fork for context recovery
-1. Copy `flows/sdd-[existing]/` to `flows/sdd-[new]/`
-2. Update `_status.md` to note the fork origin
-3. Ask user what adjustments to make
-4. Continue from current phase with modifications
+Use fork when the current flow is exhausted (context rot, wrong approaches, dead ends).
+
+**Do NOT blindly copy all flow docs.** Instead:
+
+1. **Analyze the exhausted flow** `flows/sdd-[existing]/`:
+   - Read all artifacts (requirements, specs, plan, implementation log)
+   - Identify what worked well (keep these insights)
+   - Identify what went wrong (failed approaches, wrong assumptions, dead ends)
+   - Note any valuable learnings or discoveries
+
+2. **Create summary document** in new flow `flows/sdd-[new]/`:
+   - Create `00-fork-context.md` with:
+     ```markdown
+     # Fork Context
+
+     ## Origin
+     Forked from: `sdd-[existing]`
+     Reason for fork: [user explains or inferred from analysis]
+
+     ## What Worked
+     - [List successful decisions, valid requirements, good discoveries]
+
+     ## What Failed
+     - [List failed approaches with brief explanation of why]
+     - [Wrong assumptions that led us astray]
+     - [Dead ends encountered]
+
+     ## Key Learnings
+     - [Insights to carry forward]
+
+     ## Recommendations for New Approach
+     - [What to do differently this time]
+     ```
+
+3. **Start fresh in REQUIREMENTS phase**:
+   - Create `_status.md` with phase = REQUIREMENTS
+   - Reference the fork context in requirements gathering
+   - Do NOT copy old requirements/specs/plan verbatim
+   - Use learnings to ask better questions and avoid known pitfalls
+
+4. **Begin requirements elicitation**:
+   - Ask user: "What should we keep from the original requirements?"
+   - Ask user: "What needs to change given what we learned?"
+   - Build new requirements informed by past experience
 
 ### `status` - Show all active SDD flows
 1. List all `flows/sdd-*/` directories
